@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: account-service
+          uri: lb://account-service
+          predicates:
+            - Path=/account/**
+          filters:
+            - StripPrefix=1
