@@ -14,10 +14,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static net.hwyz.iov.cloud.tsp.sgw.enums.HttpHeaders.*;
+import static net.hwyz.iov.cloud.tsp.framework.commons.enums.CustomHeaders.*;
 
 /**
  * 身份认证网关过滤器
@@ -47,11 +46,11 @@ public class AuthenticationGatewayFilterFactory extends AbstractGatewayFilterFac
             }
             Mono<JSONObject> responseMono = webClientBuilder.build()
                     .post().uri("lb://account-service/service/token/authenticateMp")
-                    .bodyValue(new JSONObject().set("token", token).set("clientId", clientId))
+                    .bodyValue(new JSONObject().set(TOKEN.value, token).set(CLIENT_ID.value, clientId))
                     .retrieve()
                     .bodyToMono(JSONObject.class);
             return responseMono.flatMap(response -> {
-                ServerHttpRequest request = exchange.getRequest().mutate().header(UID.value, response.getStr(UID.value)).build();
+                ServerHttpRequest request = exchange.getRequest().mutate().header(CLIENT_ACCOUNT.value, response.toString()).build();
                 return chain.filter(exchange.mutate().request(request).build());
             });
         };

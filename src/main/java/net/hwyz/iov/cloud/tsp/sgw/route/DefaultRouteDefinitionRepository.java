@@ -59,6 +59,7 @@ public class DefaultRouteDefinitionRepository implements RouteDefinitionReposito
         try {
             List<RouteDefinition> list = new ArrayList<>();
             // 测试阶段先手动添加
+            list.add(addRoute("/mp/rvc/action/findVehicle", "rvc-service", "/mp/rvc/action/findVehicle", ListUtil.of("Authentication")));
             list.add(addRoute("/mp/login/sendVerifyCode", "account-service", "/account/mp/login/sendVerifyCode",
                     ListUtil.of("StripPrefix=1")));
             list.add(addRoute("/mp/login/verifyCodeLogin", "account-service", "/account/mp/login/verifyCodeLogin",

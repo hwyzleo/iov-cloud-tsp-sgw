@@ -16,6 +16,10 @@
     <description>服务网关</description>
     <name>service-gateway</name>
 
+    <properties>
+        <framework-commons.version>0.0.1-SNAPSHOT</framework-commons.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -32,6 +36,13 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+        <!-- 框架：通用 -->
+        <dependency>
+            <groupId>net.hwyz.iov.cloud.tsp</groupId>
+            <artifactId>framework-commons-starter</artifactId>
+            <version>${framework-commons.version}</version>
         </dependency>
 
         <!-- Mac M1 Netty DNS处理 -->
