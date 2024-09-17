@@ -61,6 +61,7 @@ public class DefaultRouteDefinitionRepository implements RouteDefinitionReposito
             // 测试阶段先手动添加
             list.add(addRoute("/mp/rvc/action/findVehicle", "rvc-service", "/mp/rvc/action/findVehicle", ListUtil.of("Authentication")));
             list.add(addRoute("/mp/rvc/findVehicle", "rvc-service", "/mp/rvc/findVehicle", ListUtil.of("Authentication")));
+            list.add(addRoute("/mp/rvc/cmd", "rvc-service", "/mp/rvc/cmd", ListUtil.of("Authentication")));
             list.add(addRoute("/mp/login/action/sendSmsVerifyCode", "account-service", "/mp/login/action/sendSmsVerifyCode",
                     ListUtil.of()));
             list.add(addRoute("/mp/login/action/smsVerifyCodeLogin", "account-service", "/mp/login/action/smsVerifyCodeLogin",
