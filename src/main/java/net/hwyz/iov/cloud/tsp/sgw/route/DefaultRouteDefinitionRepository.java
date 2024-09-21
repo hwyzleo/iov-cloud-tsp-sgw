@@ -76,6 +76,8 @@ public class DefaultRouteDefinitionRepository implements RouteDefinitionReposito
                     ListUtil.of("StripPrefix=1", "Authentication")));
             list.add(addRoute("/mp/account/action/modifyAvatar", "account-service", "/account/mp/account/action/modifyAvatar",
                     ListUtil.of("StripPrefix=1", "Authentication")));
+            list.add(addRoute("/mp/client/action/updateConfig", "account-service", "/mp/client/action/updateConfig",
+                    ListUtil.of()));
             routeDefinitionList = list;
             logger.info("路由配置已加载,加载条数:{}", routeDefinitionList.size());
         } catch (Exception e) {
