@@ -18,6 +18,7 @@
 
     <properties>
         <framework-commons.version>0.0.1-SNAPSHOT</framework-commons.version>
+        <framework-mysql.version>0.0.1-SNAPSHOT</framework-mysql.version>
     </properties>
 
     <dependencies>
@@ -43,6 +44,13 @@
             <groupId>net.hwyz.iov.cloud.tsp</groupId>
             <artifactId>framework-commons-starter</artifactId>
             <version>${framework-commons.version}</version>
+        </dependency>
+
+        <!-- 框架: MySQL -->
+        <dependency>
+            <groupId>net.hwyz.iov.cloud.tsp</groupId>
+            <artifactId>framework-mysql-starter</artifactId>
+            <version>${framework-mysql.version}</version>
         </dependency>
 
         <!-- Mac M1 Netty DNS处理 -->

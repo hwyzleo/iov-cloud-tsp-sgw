@@ -1,0 +1,18 @@
+package net.hwyz.iov.cloud.tsp.sgw.repository.dao;
+
+import net.hwyz.iov.cloud.tsp.sgw.repository.po.RoutePo;
+import net.hwyz.iov.cloud.tsp.framework.mysql.dao.BaseDao;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * <p>
+ * 路由表 DAO
+ * </p>
+ *
+ * @author hwyz_leo
+ * @since 2024-10-08
+ */
+@Mapper
+public interface RouteDao extends BaseDao<RoutePo, Long> {
+
+}

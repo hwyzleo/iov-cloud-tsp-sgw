@@ -35,11 +35,7 @@ public class DynamicRouteServiceImpl implements DynamicRouteService, Application
 
     @Override
     public void update(RouteDefinition definition) {
-        try {
-            delete(definition.getId());
-        } catch (Exception e) {
-
-        }
+        delete(definition.getId());
         try {
             routeDefinitionWriter.save(Mono.just(definition)).subscribe();
             this.publisher.publishEvent(new RefreshRoutesEvent(this));
@@ -50,6 +46,10 @@ public class DynamicRouteServiceImpl implements DynamicRouteService, Application
 
     @Override
     public void delete(String id) {
-        this.routeDefinitionWriter.delete(Mono.just(id)).onErrorResume((t) -> Mono.empty());
+        try {
+            this.routeDefinitionWriter.delete(Mono.just(id)).onErrorResume((t) -> Mono.empty());
+        } catch (Exception e) {
+
+        }
     }
 }
