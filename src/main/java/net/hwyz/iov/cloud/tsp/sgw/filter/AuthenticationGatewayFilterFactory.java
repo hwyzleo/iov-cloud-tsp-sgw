@@ -50,6 +50,16 @@ public class AuthenticationGatewayFilterFactory extends AbstractGatewayFilterFac
                     .retrieve()
                     .bodyToMono(JSONObject.class);
             return responseMono.flatMap(response -> {
+                if (response.size() == 0) {
+                    logger.warn("设备[{}]令牌[{}]无效", clientId, token);
+                    exchange.getResponse().getHeaders().add("Content-Type", "application/json");
+                    return exchange.getResponse().writeWith(Mono.just(exchange.getResponse()
+                            .bufferFactory().wrap(new JSONObject()
+                                    .set("code", 100000)
+                                    .set("message", "设备令牌无效")
+                                    .set("ts", System.currentTimeMillis())
+                                    .toString().getBytes())));
+                }
                 ServerHttpRequest request = exchange.getRequest().mutate().header(CLIENT_ACCOUNT.value, response.toString()).build();
                 return chain.filter(exchange.mutate().request(request).build());
             });
