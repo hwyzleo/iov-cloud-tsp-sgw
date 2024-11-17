@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PROJECT_NAME = "${env.JOB_NAME}"
-        IMAGE_NAME = "${env.REGISTRY_URL}/${projectName}:${env.BUILD_NUMBER}"
+        IMAGE_NAME = "${env.REGISTRY_URL}/${PROJECT_NAME}:${env.BUILD_NUMBER}"
     }
 
     stages {
