@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    parameters {
+    environment {
         PROJECT_NAME = "${env.JOB_NAME}"
         IMAGE_NAME = "${env.REGISTRY_URL}/${projectName}:${env.BUILD_NUMBER}"
     }
