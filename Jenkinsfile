@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    def imageName
+
+    parameters {
+        imageName = ""
+    }
 
     stages {
         stage('构建镜像') {
