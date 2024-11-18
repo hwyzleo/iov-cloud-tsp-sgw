@@ -24,7 +24,7 @@
     <repositories>
         <repository>
             <id>maven-snapshots</id>
-            <url>http://nexus:8081/repository/maven-snapshots/</url>
+            <url>http://maven.rox-motor.com:8081/repository/maven-snapshots/</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
