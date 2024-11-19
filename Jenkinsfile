@@ -10,7 +10,7 @@ pipeline {
         stage('构建镜像') {
             steps {
                 script {
-                    sh "docker build --network=my_network -t ${IMAGE_NAME} -f ../Dockerfile ."
+                    sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ."
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
         stage('运行镜像') {
             steps {
                 sh "docker pull ${IMAGE_NAME}"
-                sh "docker run -d --network=my_network --name ${PROJECT_NAME} ${IMAGE_NAME}"
+                sh "docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}"
             }
         }
     }
