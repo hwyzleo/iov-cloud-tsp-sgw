@@ -83,7 +83,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.6.1</version>
                 <configuration>
-                    <finalName>${project.name}</finalName>
                     <executable>true</executable>
                 </configuration>
                 <executions>
