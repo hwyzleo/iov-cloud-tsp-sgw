@@ -25,6 +25,7 @@ pipeline {
                 sh "docker rm ${PROJECT_NAME}"
                 sh "docker pull ${IMAGE_NAME}"
                 sh "docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}"
+                sh "docker logs -f ${PROJECT_NAME}"
             }
         }
     }
