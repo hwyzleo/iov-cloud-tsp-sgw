@@ -10,23 +10,40 @@ pipeline {
         stage('构建镜像') {
             steps {
                 script {
-                    sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ."
+                    sh '''
+                        echo '============================== 构建镜像 =============================='
+                        docker build -t ${IMAGE_NAME} -f ../Dockerfile .
+                    '''
                 }
             }
         }
         stage('上传镜像') {
             steps {
-                sh "docker push ${IMAGE_NAME}"
+                script {
+                    sh '''
+                        echo '============================== 上传镜像 =============================='
+                        docker push ${IMAGE_NAME}
+                    '''
+                }
             }
         }
         stage('运行镜像') {
             steps {
-                sh "docker stop ${PROJECT_NAME}"
-                sh "docker rm ${PROJECT_NAME}"
-                sh "docker pull ${IMAGE_NAME}"
-                sh "docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}"
-                sh "sleep 10"
-                sh "docker logs ${PROJECT_NAME}"
+                script {
+                    sh '''
+                        echo '============================== 运行镜像 =============================='
+                        if [ -n \"\$(docker ps -q -f name=${PROJECT_NAME})" ]; then
+                            docker stop ${PROJECT_NAME}
+                        fi
+                        if [ -n \"\$(docker ps -aq -f name=${PROJECT_NAME})" ]; then
+                            docker rm ${PROJECT_NAME}
+                        fi
+                        docker pull ${IMAGE_NAME}
+                        docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}
+                        sleep 10
+                        docker logs ${PROJECT_NAME}
+                    '''
+                }
             }
         }
     }
