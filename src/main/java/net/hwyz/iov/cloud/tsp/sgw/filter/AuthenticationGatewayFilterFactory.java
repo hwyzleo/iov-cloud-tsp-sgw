@@ -16,7 +16,8 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-import static net.hwyz.iov.cloud.tsp.framework.commons.enums.CustomHeaders.*;
+import static net.hwyz.iov.cloud.framework.common.enums.CustomHeaders.*;
+
 
 /**
  * 身份认证网关过滤器

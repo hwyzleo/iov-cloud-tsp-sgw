@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import net.hwyz.iov.cloud.tsp.framework.mysql.po.BasePo;
+import net.hwyz.iov.cloud.framework.mysql.po.BasePo;
 
 /**
  * <p>

@@ -28,7 +28,7 @@ public class TestRouteDao extends BaseTest {
     public void testInsertPo() throws Exception {
         Map<String, Object> predicates = new HashMap<>();
         Map<String, Object> arguments = new HashMap<>();
-        arguments.put("pattern", "/mp/account/**");
+        arguments.put("pattern", "/mp/dealership/**");
         predicates.put("Path", arguments);
         Map<String, Object> filters = new HashMap<>();
         filters.put("Authentication", new HashMap<>());
@@ -36,7 +36,7 @@ public class TestRouteDao extends BaseTest {
                 .predicates(JSONUtil.toJsonStr(predicates))
                 .filters(JSONUtil.toJsonStr(filters))
                 .targetType(RouteTargetType.LB.name())
-                .targetUri("account-service")
+                .targetUri("org-service")
                 .sort(99)
                 .build();
         routeDao.insertPo(routePo);

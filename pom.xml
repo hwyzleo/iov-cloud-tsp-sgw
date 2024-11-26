@@ -6,33 +6,21 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>net.hwyz.iov.cloud.tsp</groupId>
-        <artifactId>cloud-parent</artifactId>
+        <groupId>net.hwyz.iov.cloud.parent</groupId>
+        <artifactId>cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <groupId>net.hwyz.iov.cloud.tsp</groupId>
     <artifactId>service-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>服务网关</description>
     <name>service-gateway</name>
 
     <properties>
-        <framework-commons.version>0.0.1-SNAPSHOT</framework-commons.version>
+        <framework-common.version>0.0.1-SNAPSHOT</framework-common.version>
         <framework-mysql.version>0.0.1-SNAPSHOT</framework-mysql.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>maven-snapshots</id>
-            <url>http://nexus-internal.rox-motor.com:8081/repository/maven-snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
@@ -54,14 +42,14 @@
 
         <!-- 框架：通用 -->
         <dependency>
-            <groupId>net.hwyz.iov.cloud.tsp</groupId>
-            <artifactId>framework-commons-starter</artifactId>
-            <version>${framework-commons.version}</version>
+            <groupId>net.hwyz.iov.cloud.framework</groupId>
+            <artifactId>framework-common-starter</artifactId>
+            <version>${framework-common.version}</version>
         </dependency>
 
         <!-- 框架: MySQL -->
         <dependency>
-            <groupId>net.hwyz.iov.cloud.tsp</groupId>
+            <groupId>net.hwyz.iov.cloud.framework</groupId>
             <artifactId>framework-mysql-starter</artifactId>
             <version>${framework-mysql.version}</version>
         </dependency>
@@ -95,5 +83,31 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>maven-snapshots</id>
+            <url>http://nexus-internal.rox-motor.com:8081/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-snapshots</id>
+            <url>http://nexus-internal.rox-motor.com:8081/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
