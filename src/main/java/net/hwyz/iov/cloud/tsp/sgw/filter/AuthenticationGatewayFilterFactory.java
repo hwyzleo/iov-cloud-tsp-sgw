@@ -46,7 +46,7 @@ public class AuthenticationGatewayFilterFactory extends AbstractGatewayFilterFac
                 throw new RuntimeException("缺失ClientId或Token");
             }
             Mono<JSONObject> responseMono = webClientBuilder.build()
-                    .post().uri("lb://account-service/service/token/authenticateMp")
+                    .post().uri("lb://tsp-account/service/token/authenticateMp")
                     .bodyValue(new JSONObject().set(TOKEN.value, token).set(CLIENT_ID.value, clientId))
                     .retrieve()
                     .bodyToMono(JSONObject.class);
